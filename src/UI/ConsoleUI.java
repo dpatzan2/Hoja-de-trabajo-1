@@ -66,19 +66,15 @@ public class ConsoleUI {
                 case 3:
                     radio.cambiarTipoRadio();
                     break;
-<<<<<<< HEAD
-=======
                 case 5:
                     radio.guardarEstacion(option);
                     break;
->>>>>>> 3b59cd9777a77c7a22c9f7bbc96de57da1f4d119
                 case 4:
                     radio.apagarRadio();
                     siEstaApagado(scanner);
                     break;
                 case 6:
                     radio.seleccionarEstacion(option);
-                    siEstaApagado(scanner);
                     break;
             }
         }while (option != 0);

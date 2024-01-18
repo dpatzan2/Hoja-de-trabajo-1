@@ -48,47 +48,43 @@ public class Radio implements interfaces.Radio {
 
     @Override
     public void cambiarFrecuencia(int direccion) {
-        System.out.println(direccion);
         if (estadoRadio) {
-            if (direccion == 1) {
-                frecuencia += 10;
-                if (tipoRadio){
-                    if(frecuencia <107.9){
-                        frecuencia +=0.2;
-                    } else {
-                        frecuencia = 87.9;
+            if (direccion == 1 || direccion == 2) {
+                if (tipoRadio) {
+                    if (direccion == 1) {
+                        frecuencia += 0.2;
+                        if (frecuencia > 107.9) {
+                            frecuencia = 87.9;
+                        }
+                        System.out.println("Frecuencia aumentada: " + frecuencia);
+                    } else if (direccion == 2) {
+                        frecuencia -= 0.2;
+                        if (frecuencia < 87.9) {
+                            frecuencia = 107.9;
+                        }
+                        System.out.println("Frecuencia disminuida: " + frecuencia);
                     }
-                }else{
-                    if(frecuencia < 1610.0){
-                        frecuencia +=10;
-                    } else {
-                        frecuencia = 530.0;
+                } else { // AM
+                    if (direccion == 1) {
+                        frecuencia += 10;
+                        if (frecuencia > 1610.0) {
+                            frecuencia = 530.0;
+                        }
+                        System.out.println("Frecuencia aumentada: " + frecuencia);
+                    } else if (direccion == 2) {
+                        frecuencia -= 10;
+                        if (frecuencia < 530.0) {
+                            frecuencia = 1610.0;
+                        }
+                        System.out.println("Frecuencia disminuida: " + frecuencia);
                     }
                 }
-                System.out.println("Frecuencia aumentada: " + frecuencia);
-            } else if (direccion == 2) {
-                frecuencia -= 10;
-                if (tipoRadio){
-                    if(frecuencia <107.9){
-                        frecuencia -=0.2;
-                    } else {
-                        frecuencia = 87.9;
-                    }
-                }else{
-                    if(frecuencia < 1610.0){
-                        frecuencia -=10;
-                    } else {
-                        frecuencia = 530.0;
-                    }
-                }
-                System.out.println("Frecuencia disminuida: " + frecuencia);
             } else {
                 System.out.println("Dirección no válida. Use 1 para aumentar o 2 para disminuir.");
             }
         } else {
             System.out.println("El radio está apagado. Enciéndelo antes de cambiar la frecuencia.");
         }
-
     }
 
     @Override
