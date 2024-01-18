@@ -2,7 +2,7 @@ package model;
 
 public class Radio implements interfaces.Radio {
     private boolean estadoRadio;
-    private double frecuencia;
+    private double frecuencia = 530;
     private boolean tipoRadio;
 
     @Override
@@ -27,7 +27,7 @@ public class Radio implements interfaces.Radio {
 
     @Override
     public void cambiarTipoRadio() {
-        if (tipoRadio) {
+        if (!tipoRadio) {
             System.out.println("Cambiando radio a FM....");
             tipoRadio = true;
         }else{
@@ -37,19 +37,48 @@ public class Radio implements interfaces.Radio {
     }
 
     @Override
-    public void cambiarFrecuencia() {
+    public void cambiarFrecuencia(int direccion) {
+        System.out.println(direccion);
         if (estadoRadio) {
-            frecuencia += 10;
-            if (frecuencia > 1610) {
-                frecuencia = 530;
-            } else if (frecuencia > 107.9) {
-                frecuencia = 87.9;
+            if (direccion == 1) {
+                frecuencia += 10;
+                if (tipoRadio){
+                    if(frecuencia <107.9){
+                        frecuencia +=0.2;
+                    } else {
+                        frecuencia = 87.9;
+                    }
+                }else{
+                    if(frecuencia < 1610.0){
+                        frecuencia +=10;
+                    } else {
+                        frecuencia = 530.0;
+                    }
+                }
+                System.out.println("Frecuencia aumentada: " + frecuencia);
+            } else if (direccion == 2) {
+                frecuencia -= 10;
+                if (tipoRadio){
+                    if(frecuencia <107.9){
+                        frecuencia -=0.2;
+                    } else {
+                        frecuencia = 87.9;
+                    }
+                }else{
+                    if(frecuencia < 1610.0){
+                        frecuencia -=10;
+                    } else {
+                        frecuencia = 530.0;
+                    }
+                }
+                System.out.println("Frecuencia disminuida: " + frecuencia);
+            } else {
+                System.out.println("Dirección no válida. Use 1 para aumentar o 2 para disminuir.");
             }
-
-            System.out.println("Frecuencia actual: " + frecuencia);
         } else {
             System.out.println("El radio está apagado. Enciéndelo antes de cambiar la frecuencia.");
         }
+
     }
 
     @Override

@@ -44,8 +44,24 @@ public class ConsoleUI {
             System.out.println("-------------------------------------------------------------");
             System.out.println("|                        Radio UVG                          |");
             System.out.println("-------------------------------------------------------------");
-            System.out.println(String.format("|Radio en: %-34s  Estacion: %s|", radio.isTipoRadio() ? "AM" : "FM", radio.getFrecuencia()));
+            System.out.println(String.format("|Radio en: %-32s  Estacion: %s|", radio.isTipoRadio() ? "AM" : "FM", radio.getFrecuencia()));
             System.out.println("-------------------------------------------------------------");
+            System.out.println("| Estación:                                 Tipo radio:     |");
+            System.out.println("| +: apacha 1                            AM<->FM: apacha 3  |");
+            System.out.println("| -: apacha 2                                               |");
+            System.out.println("-------------------------------------------------------------");
+            System.out.print("Seleccione una opción: ");
+            option = scanner.nextInt();
+            switch (option){
+                case 1:
+                    radio.cambiarFrecuencia(option);
+                    break;
+                case 2:
+                    radio.cambiarFrecuencia(option);
+                    break;
+                case 3:
+                    radio.cambiarTipoRadio();
+            }
         }while (option != 0);
     }
 }
