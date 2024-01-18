@@ -65,6 +65,7 @@ public class ConsoleUI {
                     break;
                 case 3:
                     radio.cambiarTipoRadio();
+                    break;
                 case 4:
                     radio.apagarRadio();
                     siEstaApagado(scanner);
