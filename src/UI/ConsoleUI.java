@@ -23,7 +23,7 @@ public class ConsoleUI {
         System.out.println("-------------------------------------------------------------");
         System.out.println("|                                                           |");
         System.out.println("|                       Radio apagado                       |");
-        System.out.println("|          Encender? Apacha 1 ; Cerrar radio: Apacha 2      |");
+        System.out.println("|          Encender? Escribir 1 ; Cerrar radio: Escribir 2  |");
         System.out.println("|                                                           |");
         System.out.println("-------------------------------------------------------------");
         System.out.print("Seleccione una opción: ");
@@ -47,11 +47,11 @@ public class ConsoleUI {
             System.out.println(String.format("|Radio en: %-32s  Estacion: %s|", radio.isTipoRadio() ? "AM" : "FM", radio.getFrecuencia()));
             System.out.println("-------------------------------------------------------------");
             System.out.println("| Estación:                                 Tipo radio:     |");
-            System.out.println("| +: apacha 1                            AM<->FM: apacha 3  |");
-            System.out.println("| -: apacha 2                                               |");
+            System.out.println("| +: Presiona 1                         AM<->FM: presiona 3 |");
+            System.out.println("| -: Presiona 2                                             |");
             System.out.println("|                                                           |");
-            System.out.println("|                                                           |");
-            System.out.println("|                                                           |");
+            System.out.println("| Guardar Radio: Presionar: 5                               |");
+            System.out.println("| Cargar Radios Guardadas: 6                                |");
             System.out.println("|                                                           |");
             System.out.println("-------------------------------------------------------------");
             System.out.print("Seleccione una opción: ");
@@ -66,8 +66,18 @@ public class ConsoleUI {
                 case 3:
                     radio.cambiarTipoRadio();
                     break;
+<<<<<<< HEAD
+=======
+                case 5:
+                    radio.guardarEstacion(option);
+                    break;
+>>>>>>> 3b59cd9777a77c7a22c9f7bbc96de57da1f4d119
                 case 4:
                     radio.apagarRadio();
+                    siEstaApagado(scanner);
+                    break;
+                case 6:
+                    radio.seleccionarEstacion(option);
                     siEstaApagado(scanner);
                     break;
             }
